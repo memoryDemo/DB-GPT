@@ -1,0 +1,13 @@
+name: Release Notification
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify-via-bark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Notification to Bark
+        run: |
+          curl -X GET "https://api.day.app/sT24fHNu6oetFNutaZKgFX/New%20Release%20Alert/DB-GPT%20has%20a%20new%20release:%20${{ github.event.release.tag_name }}.%20Check%20it%20out%20here:%20${{ github.event.release.html_url }}"
